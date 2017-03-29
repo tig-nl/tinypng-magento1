@@ -17,11 +17,14 @@ CURRENT_DIR=`pwd`
 BUILDENV="/tmp/magento.${TMPNAME}"
 TOOLS="${CURRENT_DIR}/tools"
 PUBLIC_DIR="${BUILDENV}/public/"
+COMPOSER_HOME="$HOME/.composer/vendor/bin/"
 
 mkdir -p "${TOOLS}"
 mkdir -p "${PUBLIC_DIR}"
 
-composer global require n98/magerun colinmollenhour/modman
+# Remove any previously installed composer packages to prevent installation conflicts.
+rm -rfv ~/.composer/
+composer global require n98/magerun colinmollenhour/modman phpunit/phpunit:4.8.35
 
 echo "Using build directory ${BUILDENV}"
 
@@ -52,7 +55,7 @@ n98-magerun sys:setup:run
 
 cd "${PUBLIC_DIR}/.modman/project";
 
-phpunit
+${COMPOSER_HOME}phpunit
 
 mysql -u${MAGENTO_DB_USER} ${MYSQLPASS} -h${MAGENTO_DB_HOST} -P${MAGENTO_DB_PORT} -e "DROP DATABASE IF EXISTS \`${MAGENTO_DB_NAME}\`;"
 echo "Deleting ${BUILDENV}"
