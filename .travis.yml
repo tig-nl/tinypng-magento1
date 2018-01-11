@@ -8,10 +8,11 @@ php:
   - 7.1
 
 env:
+  - MAGENTO_VERSION=magento-mirror-1.9.3.6
   - MAGENTO_VERSION=magento-mirror-1.9.2.4
   - MAGENTO_VERSION=magento-mirror-1.8.1.0
   - MAGENTO_VERSION=magento-mirror-1.8.0.0
-  - MAGENTO_VERSION=magento-mirror-1.7.0.2
+
 
 before_script:
   - export PATH=$PATH:$HOME/.composer/vendor/bin
