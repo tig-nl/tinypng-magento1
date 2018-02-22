@@ -21,8 +21,7 @@ class Tiny_CompressImages_Block_Adminhtml_System_Config_Form extends Mage_Adminh
             ->_addSavedIndicator()
             ->_addApiIndicator()
             ->_addAccountType()
-            ->_addLogButtonType()
-        ;
+            ->_addLogButtonType();
 
         return $this->_elementTypes;
     }

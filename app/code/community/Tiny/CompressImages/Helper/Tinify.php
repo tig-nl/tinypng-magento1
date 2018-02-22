@@ -93,7 +93,8 @@ class Tiny_CompressImages_Helper_Tinify extends Mage_Core_Helper_Abstract
     /**
      * Constructor
      */
-    public function __construct() {
+    public function __construct() 
+    {
         $this->_registerAutoloader();
         $this->_setIdentifier();
 
@@ -113,7 +114,7 @@ class Tiny_CompressImages_Helper_Tinify extends Mage_Core_Helper_Abstract
     {
         require_once(Mage::getBaseDir('lib') . '/TinyCompress/lib/Tinify.php');
 
-        spl_autoload_register( array($this, 'load'), true, true );
+        spl_autoload_register(array($this, 'load'), true, true);
 
         return $this;
     }
@@ -194,7 +195,8 @@ class Tiny_CompressImages_Helper_Tinify extends Mage_Core_Helper_Abstract
      *
      * @return bool
      */
-    public function validate($apiKey) {
+    public function validate($apiKey) 
+    {
         if (empty($apiKey)) {
             return false;
         }
@@ -361,8 +363,10 @@ class Tiny_CompressImages_Helper_Tinify extends Mage_Core_Helper_Abstract
         } else {
             $model->addUsedAsSource()->save();
 
-            $this->helper->log('Copying the source file from ' . $sourceFile->getPathname() .
-                ' to ' . $this->newFile->getPathname(), 'info', $this->storeId);
+            $this->helper->log(
+                'Copying the source file from ' . $sourceFile->getPathname() .
+                ' to ' . $this->newFile->getPathname(), 'info', $this->storeId
+            );
 
             if ($this->configHelper->isTestMode($this->storeId)) {
                 $this->helper->log('Testmode is enabled, no image is copied');
@@ -511,7 +515,7 @@ class Tiny_CompressImages_Helper_Tinify extends Mage_Core_Helper_Abstract
         $bytesAfter       = $this->bytesAfter;
         $totalCompression = 1;
 
-        if ($this->isBetweenDates($latest->getDateFrom(),$latest->getDateTo())) {
+        if ($this->isBetweenDates($latest->getDateFrom(), $latest->getDateTo())) {
             $bytesBefore      = $bytesBefore + $latest->getTotalBytesBefore();
             $bytesAfter       = $bytesAfter  + $latest->getTotalBytesAfter();
             $totalCompression = $totalCompression + $latest->getTotalCompressions();
@@ -520,7 +524,6 @@ class Tiny_CompressImages_Helper_Tinify extends Mage_Core_Helper_Abstract
 
             // Load the latest record for updates.
             $model->load($latest->getEntityId());
-
         } else {
             $dateFrom = Mage::getModel('core/date')->date('Y-m-01');
             $dateTo   = Mage::getModel('core/date')->date('Y-m-t');
@@ -602,7 +605,8 @@ class Tiny_CompressImages_Helper_Tinify extends Mage_Core_Helper_Abstract
      *
      * @return int|null
      */
-    public function compressionCount($store = null) {
+    public function compressionCount($store = null) 
+    {
         if(!$this->configHelper->isConfigured($store)) {
             return 0;
         }
