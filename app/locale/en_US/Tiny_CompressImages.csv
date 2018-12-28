@@ -97,3 +97,7 @@
 "Tiny_CompressImages::Optimized,Optimized"
 "Tiny_CompressImages::Please enable the extension to check the compression count.,Please enable the extension to check the compression count."
 "Tiny_CompressImages::Please enter your api key to check the compression count.,Please enter your api key to check the compression count."
+"Tiny_CompressImages::Please enter your api key to check the amount of compressions left.,Please enter your api key to check the amount of compressions left."
+"Tiny_CompressImages::Please enable the extension to check the amount of compressions left.,Please enable the extension to check the amount of compressions left."
+"Tiny_CompressImages::You are on a <b>%s plan</b> with <b>%s</b> compressions left this month.,You are on a <b>%s plan</b> with <b>%s</b> compressions left this month."
+"Tiny_CompressImages::<br/><br/><span class=\"tinypng-upgrade-text\">Remove all limitations? Visit your TinyPNG dashboard to upgrade your account.</span><a href=\"%s\" class=\"tinypng-upgrade-button\" target=\"_blank\">Upgrade Plan</a>,<br/><br/><span class=\"tinypng-upgrade-text\">Remove all limitations? Visit your TinyPNG dashboard to upgrade your account.</span><a href=\"%s\" class=\"tinypng-upgrade-button\" target=\"_blank\">Upgrade Plan</a>"
