@@ -194,7 +194,7 @@ class Tiny_CompressImages_Helper_Tinify extends Mage_Core_Helper_Abstract
      *
      * @return bool
      */
-    public function validateApiKey($apiKey)
+    public function validateApiKey($apiKey = null)
     {
         if (!$apiKey) {
             $apiKey = $this->configHelper->getApiKey($this->storeId);
