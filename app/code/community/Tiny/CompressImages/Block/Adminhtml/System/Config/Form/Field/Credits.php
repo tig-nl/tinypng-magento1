@@ -7,7 +7,17 @@ class Tiny_CompressImages_Block_Adminhtml_System_Config_Form_Field_Credits
     /**
      * @var Tiny_CompressImages_Helper_Data
      */
-    protected $_helper = null;
+    protected $_helper;
+
+    /**
+     * @var Tiny_CompressImages_Helper_Tinify
+     */
+    protected $_tinifyHelper;
+
+    /**
+     * @var Tiny_CompressImages_Helper_Config
+     */
+    protected $_configHelper;
 
     /**
      * The constructor
@@ -16,7 +26,10 @@ class Tiny_CompressImages_Block_Adminhtml_System_Config_Form_Field_Credits
     {
         parent::__construct($attributes);
 
-        $this->_helper = Mage::helper('tiny_compressimages');
+        $this->_helper       = Mage::helper('tiny_compressimages');
+        $this->_tinifyHelper = Mage::helper('tiny_compressimages/tinify');
+        $this->_configHelper = Mage::helper('tiny_compressimages/config');
+
     }
 
     /**
@@ -26,25 +39,25 @@ class Tiny_CompressImages_Block_Adminhtml_System_Config_Form_Field_Credits
      */
     public function getElementHtml()
     {
-        /** @var Tiny_CompressImages_Helper_Config $configHelper */
-        $configHelper = Mage::helper('tiny_compressimages/config');
-
-        if (!$configHelper->isConfigured()) {
-            if (!$configHelper->getApiKey()) {
-                return '<span class="compressimages-api-deactivated">'
-                    . $this->_helper->__('Please enter your api key to check the amount of compressions left.')
-                    . '</span>';
-            }
-
-            if (!$configHelper->isEnabled()) {
-                return '<span class="compressimages-api-deactivated">'
-                    . $this->_helper->__('Please enable the extension to check the amount of compressions left.')
-                    . '</span>';
-            }
+        if (!$this->_configHelper->isConfigured() && !$this->_configHelper->getApiKey()) {
+            return '<span class="compressimages-api-deactivated">'
+                . $this->_helper->__('Please enter your api key to check the amount of compressions left.')
+                . '</span>';
         }
 
-        $payingState      = Mage::helper('tiny_compressimages/tinify')->getPayingState();
-        $remainingCredits = Mage::helper('tiny_compressimages/tinify')->getRemainingCredits();
+        if (!$this->_configHelper->isConfigured() && !$this->_configHelper->isEnabled()) {
+            return '<span class="compressimages-api-deactivated">'
+                . $this->_helper->__('Please enable the extension to check the amount of compressions left.')
+                . '</span>';
+        }
+
+        return $this->messageGenerator();
+    }
+
+    protected function messageGenerator()
+    {
+        $payingState      = $this->_tinifyHelper->getPayingState();
+        $remainingCredits = $this->_tinifyHelper->getRemainingCredits();
 
         if (!$remainingCredits && $payingState !== 'free') {
             $remainingCredits = 'unlimited';
@@ -66,16 +79,17 @@ class Tiny_CompressImages_Block_Adminhtml_System_Config_Form_Field_Credits
      *
      * @return string
      */
-    private function addUpgradeButton($resultString)
+    protected function addUpgradeButton($resultString)
     {
-        $apiEmail         = Mage::helper('tiny_compressimages/tinify')->getApiEmail();
-        $upgradeUrl       = self::TINY_COMPRESSIMAGES_BASE_UPGRADE_URL . $apiEmail;
+        $apiEmail   = $this->_tinifyHelper->getApiEmail();
+        $upgradeUrl = self::TINY_COMPRESSIMAGES_BASE_UPGRADE_URL . $apiEmail;
 
-        $resultString .= $this->_helper->__(
-            '<br/><br/><span class="tinypng-upgrade-text">Remove all limitations? Visit your TinyPNG dashboard to upgrade your account.</span>'
-            . '<a href="%s" class="tinypng-upgrade-button" target="_blank">Upgrade Plan</a>',
-            $upgradeUrl
-        );
+        $resultString .= '<p class="tinypng-upgrade-text">'
+            . $this->_helper->__('Remove all limitations? Visit your TinyPNG dashboard to upgrade your account.')
+            . '</p>'
+            . '<a href="' . $upgradeUrl . '" class="tinypng-upgrade-button" target="_blank">'
+            . $this->_helper->__('Upgrade Plan')
+            . '</a>';
 
         return $resultString;
     }

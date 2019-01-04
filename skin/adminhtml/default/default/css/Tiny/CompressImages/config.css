@@ -147,6 +147,10 @@ fieldset#tiny_compressimages_support { padding-bottom: 0; }
 .title-original { width: 65px; }
 .title-now { width: 50px; }
 
+.tinypng-upgrade-text {
+    margin-top: 16px;
+}
+
 /* ======== Advanced options ======== */
 
 

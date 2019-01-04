@@ -721,7 +721,7 @@ class Tiny_CompressImages_Helper_Tinify extends Mage_Core_Helper_Abstract
         $isValidated = Mage::helper('tiny_compressimages/tinify')->validateApiKey($apiKey);
 
         $cacheData = array();
-        if ($apiKey && $isValidated) {
+        if ($isValidated) {
             $message = '<span class="compressimages_status_success">'
                 . '<span class="indicator"><img src="' . Mage::getDesign()->getSkinUrl('images/fam_bullet_success.gif') . '"></span>'
                 . Mage::helper('tiny_compressimages')->__('API connection successful')
