@@ -79,6 +79,31 @@ fieldset#tiny_compressimages_support { padding-bottom: 0; }
 #compressimages_api_status { color: #009f3e;float: left; padding-bottom: 5px; clear: both; }
 .compressimages-api-deactivated { color: #cc0000; }
 
+.tinypng-upgrade-button {
+    padding: 5px 5px;
+    margin-top: 10px;
+    display: block;
+    width: 110px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    border-radius: 3px;
+    background: #0085ba;
+    border-color: #0073aa #006799 #006799;
+    -webkit-box-shadow: 0 1px 0 #006799;
+    box-shadow: 0 1px 0 #006799;
+    color: #fff;
+}
+
+.tinypng-upgrade-button:hover {
+    background:#00719f;
+    border-color: #005a85 #00537c #005178;
+    -webkit-box-shadow: 0 1px 0 #005a85;
+    box-shadow: 0 1px 0 #004769;
+    color: #fff;
+    text-decoration :none;
+}
+
 .compressimages_status_success .indicator,
 .compressimages_status_failure .indicator {
     vertical-align: top;
@@ -121,6 +146,10 @@ fieldset#tiny_compressimages_support { padding-bottom: 0; }
 .title-file { width: 45px; }
 .title-original { width: 65px; }
 .title-now { width: 50px; }
+
+.tinypng-upgrade-text {
+    margin-top: 16px;
+}
 
 /* ======== Advanced options ======== */
 

@@ -17,7 +17,7 @@ CURRENT_DIR=`pwd`
 BUILDENV="/tmp/magento.${TMPNAME}"
 TOOLS="${CURRENT_DIR}/tools"
 PUBLIC_DIR="${BUILDENV}/public/"
-COMPOSER_HOME="$HOME/.composer/vendor/bin/"
+COMPOSER_HOME="$HOME/.config/composer/vendor/bin/"
 
 mkdir -p "${TOOLS}"
 mkdir -p "${PUBLIC_DIR}"
@@ -35,7 +35,7 @@ MYSQLPASS=""
 if [ ! -z $MAGENTO_DB_PASS ]; then MYSQLPASS="-p${MAGENTO_DB_PASS}"; fi
 mysql -u${MAGENTO_DB_USER} ${MYSQLPASS} -h${MAGENTO_DB_HOST} -P${MAGENTO_DB_PORT} -e "DROP DATABASE IF EXISTS \`${MAGENTO_DB_NAME}\`; CREATE DATABASE \`${MAGENTO_DB_NAME}\`;"
 
-n98-magerun install \
+${COMPOSER_HOME}n98-magerun install \
       --dbHost="${MAGENTO_DB_HOST}" --dbUser="${MAGENTO_DB_USER}" --dbPass="${MAGENTO_DB_PASS}" --dbName="${MAGENTO_DB_NAME}" --dbPort="${MAGENTO_DB_PORT}" \
       --installSampleData=no \
       --useDefaultConfigParams=yes \
@@ -49,9 +49,9 @@ cp -rf . "${PUBLIC_DIR}/.modman/project"
 
 cd "${PUBLIC_DIR}"
 
-modman deploy-all
-n98-magerun config:set dev/template/allow_symlink 1
-n98-magerun sys:setup:run
+${COMPOSER_HOME}modman deploy-all
+${COMPOSER_HOME}n98-magerun config:set dev/template/allow_symlink 1
+${COMPOSER_HOME}n98-magerun sys:setup:run
 
 cd "${PUBLIC_DIR}/.modman/project";
 
