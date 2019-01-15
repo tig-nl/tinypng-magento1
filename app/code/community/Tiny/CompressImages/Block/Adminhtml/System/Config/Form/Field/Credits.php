@@ -88,7 +88,7 @@ class Tiny_CompressImages_Block_Adminhtml_System_Config_Form_Field_Credits
             . $this->_helper->__('Remove all limitations? Visit your TinyPNG dashboard to upgrade your account.')
             . '</p>'
             . '<a href="' . $upgradeUrl . '" class="tinypng-upgrade-button" target="_blank">'
-            . $this->_helper->__('Upgrade Plan')
+            . $this->_helper->__('Upgrade account')
             . '</a>';
 
         return $resultString;

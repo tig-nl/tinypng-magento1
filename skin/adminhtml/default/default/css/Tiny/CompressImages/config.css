@@ -79,27 +79,32 @@ fieldset#tiny_compressimages_support { padding-bottom: 0; }
 #compressimages_api_status { color: #009f3e;float: left; padding-bottom: 5px; clear: both; }
 .compressimages-api-deactivated { color: #cc0000; }
 
+#row_tiny_compressimages_settings_credits .value{
+    position: relative;
+}
+
 .tinypng-upgrade-button {
-    padding: 5px 5px;
-    margin-top: 10px;
-    display: block;
-    width: 110px;
+    padding: 8px 15px;
     text-align: center;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 13px;
+    background-color: #3abbd0;
+    border: none;
+    border-bottom: 3px solid #269eb1;
     border-radius: 3px;
-    background: #0085ba;
-    border-color: #0073aa #006799 #006799;
-    -webkit-box-shadow: 0 1px 0 #006799;
-    box-shadow: 0 1px 0 #006799;
     color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    right: -145px;
+    top: 60px;
+    letter-spacing: 0.2px;
 }
 
 .tinypng-upgrade-button:hover {
-    background:#00719f;
-    border-color: #005a85 #00537c #005178;
-    -webkit-box-shadow: 0 1px 0 #005a85;
-    box-shadow: 0 1px 0 #004769;
+    background-color:#359cb1;
+    border-bottom: 3px solid #348297;
     color: #fff;
     text-decoration :none;
 }
@@ -149,6 +154,8 @@ fieldset#tiny_compressimages_support { padding-bottom: 0; }
 
 .tinypng-upgrade-text {
     margin-top: 16px;
+    font-style: italic;
+
 }
 
 /* ======== Advanced options ======== */
