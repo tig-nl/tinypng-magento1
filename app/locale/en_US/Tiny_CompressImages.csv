@@ -101,3 +101,4 @@
 "Tiny_CompressImages::Please enable the extension to check the amount of compressions left.","Please enable the extension to check the amount of compressions left."
 "Tiny_CompressImages::Remove all limitations? Visit your TinyPNG dashboard to upgrade your account.","Remove all limitations? Visit your TinyPNG dashboard to upgrade your account."
 "Tiny_CompressImages::Upgrade Plan","Upgrade Plan"
+"Tiny_CompressImages::For stores with large number of product images it may be wise to delete the images manually in batches from the product cache folder and not all at once.","For stores with large number of product images it may be wise to delete the images manually in batches from the product cache folder and not all at once."
