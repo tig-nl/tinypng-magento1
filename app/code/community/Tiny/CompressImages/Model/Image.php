@@ -133,7 +133,7 @@ class Tiny_CompressImages_Model_Image extends Mage_Core_Model_Abstract
             )
         ) {
             $dateFrom = Mage::getModel('core/date')->date('Y-m-01');
-            $dateTo   = Mage::getModel('core/date')->date('Y-m-t');
+            $dateTo   = Mage::getModel('core/date')->date('Y-m-t 23:59:59');
 
             $collection->addFieldToFilter(
                 'processed_at',
