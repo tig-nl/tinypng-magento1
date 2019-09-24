@@ -39,6 +39,6 @@ Describe the temporarily workaround or if none exists write "None"
 If applicable, add screenshots to help explain your problem.
 
 ** Please complete the following information**
-- Magento version: [e.g. Magento 2.3.1]
+- Magento version: [e.g. Magento 1.19.3]
 - PHP version: [e.g. 7.2.0]
 - TIG TinyPNG version: [e.g. 1.8.1]
